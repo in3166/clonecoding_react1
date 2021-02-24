@@ -1,6 +1,7 @@
 # 1. mongoDB 연결
  C/Users/yu/Desktop/study/react/inflearn/clonecoding_react1
-
+### useEffect
+- Dom이 처음 Load되면 할 것들 (or Update 시?)
 # 2. The Movie API 설명
  - themoviedb.org
  - 가입 후 로그인, API 키 받기
@@ -32,9 +33,16 @@
   - currentPage State 추가
 
 # 6. Movie Detail 페이지 만들기
+- views/MovieDetail/MovieDetail.js
 - 특정 영화에 해당하는 자세한 정보 가져오기
+  - url 파라미터로 id 가져오기 
+  - fetch로 id에 맞는 정보 가져오기
+
 - 무비 API에서 가져온 정보 State에 넣기
-- 전체적 Template 만들기
+- 전체적 Template 만들기 (in return)
+  - MainImage 컴포넌트 재사용해서 메인 이미지 올리기
+        //let movie = props.movie;  same
+    let { movie } = props; // 구조 분해 할당
 - 영화에 나오는 Crews 정보 가져와 State에 넣기
 - State에 보관된 Date들을 화면에 보여주기
 
