@@ -1,5 +1,6 @@
 # 1. mongoDB 연결
  C/Users/yu/Desktop/study/react/inflearn/clonecoding_react1
+ https://github.com/jaewonhimnae/react-movie-app-ko/blob/master/client/src/components/App.js
 ### useEffect
 - Dom이 처음 Load되면 할 것들 (or Update 시?)
 # 2. The Movie API 설명
@@ -33,23 +34,54 @@
   - currentPage State 추가
 
 # 6. Movie Detail 페이지 만들기
+# 7. 영화 출연진 가져오기
+
 - views/MovieDetail/MovieDetail.js
+
 - 특정 영화에 해당하는 자세한 정보 가져오기
   - url 파라미터로 id 가져오기 
   - fetch로 id에 맞는 정보 가져오기
 
 - 무비 API에서 가져온 정보 State에 넣기
+
 - 전체적 Template 만들기 (in return)
   - MainImage 컴포넌트 재사용해서 메인 이미지 올리기
         //let movie = props.movie;  same
     let { movie } = props; // 구조 분해 할당
-- 영화에 나오는 Crews 정보 가져와 State에 넣기
-- State에 보관된 Date들을 화면에 보여주기
 
-# 7. 영화 출연진 가져오기
+- 영화에 나오는 Crews 정보 가져와 State에 넣기
+  - 이미지가 없는 배우 최상위 폴더에 uploads 폴더 만들고 기본이미지 넣어준 후 express.static
+
+- State에 보관된 Date들을 화면에 보여주기
+  - 토글 버튼 만들기 (출연지 보여주기, 숨기기)
 
 
 # 8. Favorite 버튼 만들기
+- Facorite Model 만들기
+- server/models/Favorite.js
+  ```
+  [Favorite]
+  ----------------
+  +userFrom
+  +movieId
+  +movieTitle
+  +movieImage
+  +movieRunTime
+  ```
+
+- Favorite Button UI 만들기
+
+
+- 얼마나 많은 사람이 추가했는지 정보 얻기
+  - Favorite 버튼 컴포넌트에 userFrom(loginPage에서 localStorage에 저장), Movie, movieId 정보를 props로 넘겨주고 서버에 인자로 줘서 정보 받아오기
+
+- 내가 이 영화를 이미 Favorite 리스트에 넣었는지 정보 얻기
+  - movieId와 userFrom 서버에 넘겨주고 두 개로 찾아서 나의 좋아요 여부 정보 가져오기
+  - 이 좋아여 여부의 state를 변경하여 버튼의 글자 변경
+
+- 위의 두 정보를 State에 저장 (userEffect - page load시 보여줘야 하니까)
+
+- 버튼을 클릭했을 때 (문구와 숫자 변경)
 
 
 # 9. Favorite List에 추가, 삭제
@@ -57,6 +89,17 @@
 
 # 10. Favorite 페이지 만들기
 
+
+## Q & A
+React.Fragment
+
+map
+
+ref
+
+hoc
+
 <br><br>
+
 <출처>
 - https://www.inflearn.com/course/%EB%94%B0%EB%9D%BC%ED%95%98%EB%A9%B0-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EB%85%B8%EB%93%9C-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%98%81%ED%99%94%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/lecture/36375?tab=curriculum&q=29068
