@@ -11,9 +11,9 @@ function GridCards(props) {
                     <a href={`/movie/${props.movieId}`}>
                         <img style={{ width: '100%', height: '320px' }} src={props.image} alt={props.movieName} />
                     </a>
-                </div>
-                <div>
-                    <label>{props.movieName}  Heart</label>
+                    <div>
+                        <label style={{ display: 'block', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{props.movieName}</label>
+                    </div>
                 </div>
             </Col >
         )

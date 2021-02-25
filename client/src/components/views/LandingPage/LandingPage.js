@@ -31,6 +31,7 @@ function LandingPage() {
         fetch(endpoint)
             .then(res => res.json())
             .then(res => {
+                console.log(res.results)
                 // setMovies([...response.results])  // 현재 가져온걸 덮어 씌움 [response.results] -> response.results / ...[response.resultes]
                 setMovies([...Movies, ...res.results])
                 setMainMovieImage(res.results[0])
@@ -82,7 +83,7 @@ function LandingPage() {
                         <React.Fragment key={index}>
                             <GridCards
                                 landingPage
-                                image={movie.poster_path ? `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
+                                image={movie.poster_path ? `${IMAGE_BASE_URL}w500${movie.poster_path}` : `http://localhost:5000/uploads/default.jpg`}
                                 movieId={movie.id}
                                 movieName={movie.original_title}
                             />
