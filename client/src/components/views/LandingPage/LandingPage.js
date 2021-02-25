@@ -9,7 +9,6 @@ import { Row } from 'antd';
 function LandingPage() {
 
     const buttonRef = useRef(null);
-
     const [Movies, setMovies] = useState([]);
     const [MainMovieImage, setMainMovieImage] = useState(null);
     const [CurrentPage, setCurrentPage] = useState(0); // 페이지 load 되자마자 fetchMovies()가 실행되므로 현재페이지 1저장?
@@ -18,6 +17,7 @@ function LandingPage() {
     useEffect(() => {
         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
         fetchMovies(endpoint); // app이 로드되자마자 fetch
+
     }, [])
 
     // 스크롤 자동 loadmore
@@ -31,7 +31,7 @@ function LandingPage() {
         fetch(endpoint)
             .then(res => res.json())
             .then(res => {
-                console.log(res.results)
+                //console.log(res.results)
                 // setMovies([...response.results])  // 현재 가져온걸 덮어 씌움 [response.results] -> response.results / ...[response.resultes]
                 setMovies([...Movies, ...res.results])
                 setMainMovieImage(res.results[0])
@@ -54,10 +54,15 @@ function LandingPage() {
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 
         const windowBottom = windowHeight + window.pageYOffset;
+
         if (windowBottom >= docHeight - 1) {
+            let rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
             // loadMoreItems()
             console.log('clicked')
-            buttonRef.current.click();
+            console.log(rememberMeChecked)
+            // console.log(rememberMeChecked)
+            if (rememberMeChecked == true)
+                buttonRef.current.click();
         }
     }
 

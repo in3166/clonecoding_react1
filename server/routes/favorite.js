@@ -41,6 +41,7 @@ router.post('/favorited', (req, res) => {
 router.post('/addToFavorite', (req, res) => {
     // favorite DB Model에 받은 정보 넣어주면 됨.
     // document instance 생성
+    console.log(req.body)
     const favorite = new Favorite(req.body);
     favorite.save((err, doc) => {
         if (err) return res.sendStatus(400).send(err)
@@ -55,6 +56,30 @@ router.post('/removeFromFavorite', (req, res) => {
             if (err) return res.status(400).send(err)
             return res.status(200).json({ success: true, doc })
         });
+});
+
+
+router.post('/getFavoriteMovie', (req, res) => {
+    // 내가 좋아요한 영화 목록 가져오기
+    // Favorite 모델의 find를 사용
+    Favorite.find({ 'userFrom': req.body.userFrom })
+        .exec((err, favorites) => {
+            if (err) return res.status(400).send(err)
+            return res.status(200).json({ success: true, favorites })
+        })
+
+});
+
+
+router.post('/removeFromFavorite', (req, res) => {
+    // 내가 좋아요한 영화 목록 가져오기
+    // Favorite 모델의 find를 사용
+    Favorite.findOneAndDelete({ 'movieId': req.body.movieId, 'userFrom': req.body.userFrom })
+        .exec((err, result) => {
+            if (err) return res.status(400).send(err)
+            return res.status(200).json({ success: true, result })
+        })
+
 });
 
 module.exports = router;

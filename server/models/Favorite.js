@@ -9,7 +9,7 @@ const favoriteSchema = mongoose.Schema({
     movieId: {
         type: String,
     },
-    movieTtitle: {
+    movieTitle: {
         type: String,
     },
     moviePost: {

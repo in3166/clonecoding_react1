@@ -88,7 +88,18 @@
 
 
 # 10. Favorite 페이지 만들기
+- Favorite 페이지 Template 만들기
+  - Table 형태
 
+- Mongo DB에서 Favorite된 영화 정보 가져오기
+  - useEffect 사용
+  - localStorage 어디서 저장했드라
+  - order-collapse: collapse; 
+
+- 가져온 데이터 화면에 보여주기
+  - 팝업창 생성 (antd framework)
+
+- Remove 기능 만들기
 
 ## Q & A
 React.Fragment
@@ -98,6 +109,30 @@ map
 ref
 
 hoc
+
+mongo DB
+
+Formik
+
+Yup
+
+useState
+-  setState 바로 적용안되고 한 번에 적용 -> 순서대로 안됨 -> 그럼 그냥 변수 선언해서 사용? 그안에서?
+
+payload
+- 전송되는 데이터
+-  HTTP 메시지의 페이로드는 본문(body)
+- JSON 페이로드 사용자의 정보, 발화, 실행 블록, 파라미터 등의 정보를 포함
+## 할 것들
+1. moviedetail - toggle actor view 텍스트 변경
+2. landingPage - 하트 표시
+3. auth 로그인 먼저
+
+## AWS EC2 배포 시 주의점
+- 데이터 베이스 키 dev.js 만들기
+- 포트 redirection (80 - 3000)
+- 프록시 locahost 대신 private ip로 변경
+
 
 <br><br>
 

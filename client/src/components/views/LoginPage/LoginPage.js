@@ -10,6 +10,7 @@ const { Title } = Typography;
 
 function LoginPage(props) {
   const dispatch = useDispatch();
+
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
   const [formErrorMessage, setFormErrorMessage] = useState('')
@@ -27,6 +28,7 @@ function LoginPage(props) {
         email: initialEmail,
         password: '',
       }}
+
       validationSchema={Yup.object().shape({
         email: Yup.string()
           .email('Email is invalid')
@@ -35,19 +37,22 @@ function LoginPage(props) {
           .min(6, 'Password must be at least 6 characters')
           .required('Password is required'),
       })}
+
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           let dataToSubmit = {
             email: values.email,
             password: values.password
           };
-
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem('userId', response.payload.userId);
                 if (rememberMe === true) {
                   window.localStorage.setItem('rememberMe', values.id);
+                  console.log("rememberme: ", localStorage.getItem("rememberMe"));
+                  console.log("rememberme: ", values.id);
+                  console.log("userid: ", localStorage.getItem("userId"));
                 } else {
                   localStorage.removeItem('rememberMe');
                 }
@@ -66,6 +71,7 @@ function LoginPage(props) {
         }, 500);
       }}
     >
+
       {props => {
         const {
           values,
