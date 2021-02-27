@@ -103,8 +103,12 @@
 
 - Remove 기능 만들기
 
-## Q & A
+# Q & A
 React.Fragment
+- JSX에서 return 문 안에 반드시 하나의 최상위 태그 필요
+- table 등을 만들 때, 컴포넌트가 여러 개의 엘리먼트를 반환하는데
+- 의미없는 div 가 추가를 피하기 위해 사용
+
 
 map
 
@@ -143,6 +147,11 @@ Switch
 ```
 <Route component={PageNotFound} />
 ```
+
+react-router-dom
+- withRouter
+
+
 
 ## 할 것들
 1. moviedetail - toggle actor view 텍스트 변경

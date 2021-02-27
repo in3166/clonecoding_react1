@@ -12,20 +12,21 @@ export default function (SpecificComponent, option, adminRoute = null) {
         useEffect(() => {
             //To know my current status, send Auth request 
             dispatch(auth()).then(response => {
-                //Not Loggined in Status 
+                // 분기 처리
+                // 로그인 하지 않은 상태
                 if (!response.payload.isAuth) {
-                    if (option) {
+                    if (option) { //로그인이 요구되는 페이지에 로그인하지 않은 상태로 접근 한다면
                         props.history.push('/login')
                     }
                     //Loggined in Status 
                 } else {
-                    //supposed to be Admin page, but not admin person wants to go inside
-                    if (adminRoute && !response.payload.isAdmin) {
+                    // 로그인한 상태
+                    if (adminRoute && !response.payload.isAdmin) { // 관리자가 아닌데 관리자 페이지 접근
                         props.history.push('/')
                     }
                     //Logged in Status, but Try to go into log in page 
                     else {
-                        if (option === false) {
+                        if (option === false) { // 로그인한 유저가 로그인유저 접근 금지 페이지 접근
                             props.history.push('/')
                         }
                     }
