@@ -1,6 +1,8 @@
 # 1. mongoDB 연결
  C/Users/yu/Desktop/study/react/inflearn/clonecoding_react1
  https://github.com/jaewonhimnae/react-movie-app-ko/blob/master/client/src/components/App.js
+ ssh ubuntu@13.125.246.22
+
 ### useEffect
 - Dom이 처음 Load되면 할 것들 (or Update 시?)
 # 2. The Movie API 설명
@@ -108,7 +110,7 @@ map
 
 ref
 
-hoc AAAA
+hoc auth
 
 mongo DB
 
@@ -119,19 +121,39 @@ Yup
 useState
 -  setState 바로 적용안되고 한 번에 적용 -> 순서대로 안됨 -> 그럼 그냥 변수 선언해서 사용? 그안에서?
 
+Express -> React Img http://public ip는 되는데 https로 연결됨
+
+
 payload
 - 전송되는 데이터
 -  HTTP 메시지의 페이로드는 본문(body)
 - JSON 페이로드 사용자의 정보, 발화, 실행 블록, 파라미터 등의 정보를 포함
+
+프론트 서버
+- static no?
+
+백서버
+
+Switch
+- Router대신 Switch 사용 이유
+  - 우선, path대신 exact path 사용: path 사용 시 `/`, `/path` 경로가 있으면 `/` 접근 시 두 컴포넌트 모두 렌더링 됨
+  - Switch는 exat path와 달리 첫 번째로 매칭되는 컴포넌트만 렌더링
+- 만약 `Page NotFound` 설정하고 할 때
+  - Switch를 사용하지 않으면 에러가 발생하지 않아도 모든 페이지에 렌더링 됨. (경로가 없으므로)
+```
+<Route component={PageNotFound} />
+```
+
 ## 할 것들
 1. moviedetail - toggle actor view 텍스트 변경
 2. landingPage - 하트 표시
-3. auth 로그인 먼저
+3. 무한 스크롤 다른 페이지에서 방지하기
+4. 
 
 ## AWS EC2 배포 시 주의점
 - 데이터 베이스 키 dev.js 만들기
 - 포트 redirection (80 - 3000)
-- 프록시 locahost 대신 private ip로 변경
+- 프록시 locahost 대신 public ip로 변경 (상관x?)
 
 
 <br><br>
